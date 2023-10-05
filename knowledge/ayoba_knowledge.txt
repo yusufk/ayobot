@@ -1,0 +1,708 @@
+What is Ayoba?
+Ayoba is a Superapp which is primarily a messaging service, similar to SMS, where users can also send voice messages, photos and message a group of people.
+
+Ayoba also provides a platform for businesses to create their own MicroApp within the ayoba app.
+
+What is a MicroApp?
+Microapps are single-purpose, cross-platform, lightweight web applications that can be built into Ayoba to provide rich functionality to users. They are self-sufficient and can be independently deployed and tested. Microapps can be deployed dynamically without going through an App Store approval process and downloading/updating apps. Access restrictions can be applied to restrict who can access what Microapps, and what information from the main App users is delivered.
+
+Microapps are designed to support a single step in a user's workflow. They can be used to provide users with specific information or to allow them to perform a specific task. For example, a Microapp could be used to provide users with the latest news headlines, to allow them to book a flight, or to allow them to play a game.
+
+Microapps are built using the Ayoba API, which provides access to a variety of features, such as user profiles, messaging, and file sharing. This allows microapps to be highly integrated with the ayoba platform and to provide users with a seamless experience.
+
+Microapps are a powerful way to extend the functionality of Ayoba and to provide users with a more personalized experience. They are easy to build and deploy, and they can be used to support a wide range of use cases.
+
+Why create a MicroApp in Ayoba?
+Your app will be visible to all Ayoba users, and some networks, in partnership with Ayoba, allow for data-free Microapps, where users can utilize the Microapps at no cost. This means that users can access your app even if they do not have any data, which can be a great way to reach a wider audience.
+
+Getting started with Ayoba Microapps
+Register on the developer portal https://developer.ayoba.me
+
+Sign in to the developer portal
+
+If it is your first time signing in, or the terms and conditions have been updated. You will be greeted with 2 sets of terms and conditions that you will need to sign. Look further down the page at “Guidelines” to get a brief explanation of what is not allowed on the platform.
+
+Once you have signed in, you will have full access to the developer portal.
+
+Click on the dropdown next to your name select Profile.
+
+You will see a tab called “My Microapps” next to your profile name. Click on this tab to get started with adding your first microapp.
+
+Here, you will see a list of your Microapps (If you have any) and a Plus button. Click on the plus button to add your Microapp.
+
+Fill in all the relevant fields.
+
+Section and Category are essentially the same, you will only need to fill in a category.
+
+You will need to provide a 500px by 500px JPG or PNG image for your logo.
+
+Select display in landscape if you do not want the microapp to display in portrait mode.
+
+Permissions: The descriptions of each permission will be detailed out in a following section called “Permissions”
+
+On the next page, you will need to capture what languages and countries you wish your app to be available in.
+
+You will need to EITHER a chat uri, a discovery uri or both.
+
+A uri is the link to the web application that you wish to add as an ayoba microapp, eg. (https://developer.ayoba.me)
+
+Entering it in the chat uri field, you will be able to use the appin a chat context. This means the app will be usable while within a chat with another ayoba user.
+
+Entering it in the discovery uri field, means the app will be available to use in the microapps hamburger menu within Ayoba.
+
+You will then need to tick the “Does the MicroApp contain in-app purchases (through any form of payment, or carrier billing)?” box if your microapp does have purchases or billing.
+
+Once all this is filled in, your microapp will then be submitted for dev publication, your app should be available on the developer APK (which you can download by clicking on your name in the top right of the screen and choosing “Download developer apk”)
+
+You can now view the status of your microapp on the “My microapps screen”
+
+Once it has been approved and is on the developer apk, you can now test your app. Once you are happy that everything is working correctly, you can then submit your application for live publishing using the button on the my Microapps screen.
+
+One of our agents will then be in contact with you to request any required documentation and to start off the Vetting process.
+
+Next Steps
+Now that you are familiar with Ayoba and Microapp, the subsequent documentation will provide a step-by-step guide on creating your own Microapp.
+
+How to create a microapp
+In this section, we'll walk you through getting up and running a minimum Ayoba MicroApp. Here, you will take the following steps:
+
+Step 1 : Create a folder on your desktop
+Create a folder on your desktop and name it anything you like (for example, "Ayoba Quiz").
+
+Step 2: Create an index.html file and copy and paste the code into the index.html file.
+Open the folder you created with the name "Ayoba Quiz" and create a new text file with the name "index.html". Copy and paste the following inside "index.html":
+
+<html>
+   <head>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <style>
+           img {
+             display: block;
+             margin-left: auto;
+             margin-right: auto;
+           }
+       </style>
+   </head>
+   <body style="background-color:#1565c0;">
+       <script src="../lib/microapp.js"></script>
+       <script>sayHello()</script>
+       <img src="logo.png" style="width:72px;"/>
+   </body>
+</html>
+Step 3:Create a new folder inside the Ayoba Quiz folder
+Create a new folder inside your project folder named "lib". Then, create a file named "microapp.js" inside the "lib" folder you just created. Copy and paste the following code into the "microapp.js" file you created:
+
+var Ayoba = getAyoba()
+ 
+/**
+* Determine the mobile operating system and returns the
+* proper javascript interface
+*/
+function getAyoba() {
+   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+ 
+   // Windows Phone must come first because its UA also contains "Android"
+   if (/windows phone/i.test(userAgent)) {
+       return null;
+   }
+ 
+   if (/android/i.test(userAgent)) {
+       return Android;
+   }
+ 
+   // iOS detection from: http://stackoverflow.com/a/9039885/177710
+   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+       return null; // todo
+   }
+ 
+   return "unknown";
+}
+Next Steps
+Now that you have acquired the skill to create a microapp, the upcoming documentation will illustrate the process of deploying your microapp.
+
+Microapp permissions
+Some permissions are required for the proper functioning of the API. Please find more information below:
+
+Permission types
+User Permissions: permissions needed from the user to enable the good function of the micro app
+
+Default permissions: permissions needed and auto accepted without the user consent
+
+Permissions description
+MSISDN: user’s phone number
+
+Country: user’s country (from phone number prefix)
+
+Location: user’s location
+
+SendMessage: ability to send text messages and media files on behalf of the user
+
+UserProfile: user’s nickname and profile picture
+
+UserPresence: user’s presence on the Microapp (0 or 1)
+
+UserLanguage: user’s language as selected on preferences
+
+Contacts: user’s Ayoba contact list
+
+Next Steps
+Now that you know how permissions work, the upcoming documentation will illustrate the process of deploying your microapp.
+
+Deploy Microapp
+The following documentation covers how to develop with Github Pages and GitLab Pages. Deployment guide : You will need a GitHub or GitLab account for this.
+
+How to deploy a Website Using GitHub Pages
+Step 1 : Create a GitHub Repository
+Create a new repository on GitHub. The repository name should be in the format username.github.io, where username is your GitHub username. If you already have a repository with this name, you can use a different name.
+
+Step 2 : Clone the repository
+Clone the repository to your local machine using Git. Commit the changes and push them to the remote repository.
+
+Step 3 : Configure GitHub Pages
+Go to the repository settings on GitHub and scroll down to the GitHub Pages section. Choose the main branch as the source and click on the Save button.
+
+Github_Pages_c72173f079.jpg
+Branch_286d7b6caa.png
+Save_7a85b08d7e.jpg
+Step 4 : Customize the Website
+GitHub will generate a URL for your website. You can access your website using this URL.
+Url_b9f5520fa9.jpg
+How to deploy a Website Using GitLab Pages
+Step 1 : Create a GitLab Repository
+Create a new GitLab repository for your website.
+
+Step 2 : Clone and push to the repository
+Clone the repository to your local machine using Git. Add, commit, and push your website files to the GitLab repository.
+
+Step 3 : Configure GitLab Pages
+Add the configuration file .gitlab-ci.yml . Copy and paste the code.
+
+# This file is a template, and might need editing before it works on your project.
+# Full project https://gitlab.com/pages/plain-html
+pages:
+ stage: deploy
+ script:
+   - mkdir .public
+   - cp -r * .public
+   - mv .public public
+ artifacts:
+   paths:
+     - public
+ only:
+   # choose your preferred source branch
+   - main 
+Go to your GitLab repository and click on the "Deployments" tab. Scroll down to the "Pages" section and expand it. Follow the steps on GitLab.
+
+All pages are created after the build completes successfully and the artifacts for the pages job are uploaded to GitLab.
+
+gitlab_pages_be41bd5e90.jpg
+Other Hosting Provides
+Vercel
+Firebase
+Netlify
+Heroku
+Surge
+Render
+Next Steps
+Now that you have successfully deployed your website, the next documentation will guide you through the vetting process.
+
+Vetting Process
+Once you have reached the publication stage, the following processes will occur:
+
+We will do a compliance review on the MicroApp ensuring everything is in order and compliant to the T&Cs
+
+We will do a technical review to ensure the MicroApp functionality is in place
+
+Please confirm that you have read and understood and accepted the T&Cs when you signed up.
+
+Please send us the following documentation as it forms part of the Vetting and Compliance requirements.
+
+Name
+Contact number
+Email Address
+Registered name of person or business entity
+Proof of identity (person) or proof of registration (business)
+Address (business: registered address)
+Authority to act on behalf of said entity (business)
+Next Steps
+Now that you have an understanding of how the vetting process works, the forthcoming documentation will delve into the Ayoba API.
+
+MSISDN
+This is where you will find all the documentation related to our MSISDN APIs.
+
+Get MSISDN
+Gets the user phone number
+
+Ayoba.getMsisdn()
+Example
+function getMsisdn() {
+    var msisdn = Ayoba.getMsisdn();
+    return msisdn
+ }
+Parameters
+No parameters
+Returns
+String: the user’s MSISDN. Example: +93777777778
+Permissions
+MSISDN
+Get SelfJid
+Example
+ function getSelfJid() {
+     var selfJid = getURLParameter("jid")
+     document.getElementById("inputText").value = selfJid
+     return selfJid
+ }
+Parameters
+No parameters
+Returns
+String. Examples: 62c3bdfffc5c7c6bb30bc7615beda59537d2d2df@dev.ayoba.me
+Permissions
+No permissions required
+The following method must be implemented to retrieve the call response:
+
+function getSelfJid()
+Compose message
+Puts a text on the compose bar of the chat screen without sending the message
+
+Ayoba.composeMessage(message); 
+Example
+Ayoba.composeMessage(message);
+Parameters
+message String: message to put on the compose bar
+Returns
+No return value
+Permissions
+No permissions required
+Send message
+Sends a chat message directly without putting the text on the compose bar of the chat screen
+
+Ayoba.sendMessage(message)
+Example
+Ayoba.sendMessage(message);
+Parameters
+message String: message to send directly
+Returns
+No return value
+Permissions
+SendMessage
+Get Send Message
+Returns true if the user has accepted the permission to send a message.
+
+Ayoba.getCanSendMessage()
+Example
+Ayoba.getCanSendMessage()
+Parameters
+No parameters
+Returns
+Boolean: The function returns true if user has accepted the permission to send a message; if not, returns false
+Permissions
+No permissions required
+Start Conversation
+Sends an event to Ayoba application to start conversation on the MicroApp.
+
+ayoba.startConversation(jid);
+Example
+string jid = "62c3bdfffc5c7c3bb30bc7beda52531d2d2df@dev.ayoba.me";
+function startConversation() {
+   ayoba.startConversation(jid);
+  }
+Parameters
+jid
+Returns
+No return value
+Permissions
+No permissions required
+Next Steps
+That’s all to read on the MSISDN documents. Continue to learn more about our APIs, next is some documentation on our Location APIs
+
+Get country
+Gets the user country code in ISO-3166
+
+Ayoba.getCountry()
+Example
+ var countryCode = Ayoba.getCountry();
+Parameters
+No parameters
+Returns
+String: user’s ISO-3166 country code.
+Example: AF
+Permissions
+Country
+Get User Location
+Gets the user location. The MicroApp must implement this method to retrieve the location live data. When data is updated from Ayoba, then Ayoba calls this javascript method on MicroApp to pass the new data
+
+onLocationChanged(lat, lon)
+Example
+  function onLocationChanged(lat, lon) {
+    currentLatitude = lat
+    currentLongitude = lon
+  }
+Parameters
+lat Latitude coordinate. Example: 41.4203
+lon Longitude coordinate. Example: 2.1828
+Returns
+No return value
+Permissions
+Location
+Send location
+Sends a location chat message
+
+Ayoba.sendLocation(lat, lon)
+Example
+Ayoba.sendLocation(lat, lon);
+
+// Retrieve response Example
+
+ function onLocationSentResponse(responseCode) {
+    var responseCode = responseCode
+ }
+Parameters
+lat String: latitude coordinate.
+lon String: longitude coordinate
+Returns
+No return value
+Permissions
+Location
+The following method must be implemented to retrieve the call response:
+
+function onLocationSentResponse(responseCode)
+Example
+Ayoba.sendLocation(lat, lon);
+
+// Retrieve response Example
+
+ function onLocationSentResponse(responseCode) {
+    var responseCode = responseCode
+ }
+Parameters
+responseCode
+responseCode
+1 the location has been sent successfully
+-1 the location could not be sent
+Returns
+No return value
+Permissions
+No permissions required
+Next Steps
+That’s all to read on the location documents. Continue to learn more about our APIs, next is some documentation on our Media APIs
+
+Get File
+It allows the user to choose a file from the device's filesystem and retrieve it.
+
+Ayoba.getFile()
+Example
+<script type="text/javascript">
+    function getFile() {
+        var responseCode = Ayoba.getFile();
+        return responseCode;
+    }
+</script>
+Context
+Chat and Apps
+Parameters
+No parameters
+Returns
+responseCode response code of accessing the device filesystem
+responseCode
+1 the filesystem could be accessed successfully
+-1 the filesystem could not be accessed
+Permissions
+FILEACCESS
+Get File Save to Internal Storage
+The following method must be implemented to retrieve the file once it is saved to the app's internal storage:
+
+onFileRetrievedResponse(responseCode, filePath)
+Example
+<script type="text/javascript">
+  function onFileRetrievedResponse(responseCode, filePath) {
+    var responseCode = responseCode
+    var filePath = filePath
+  }
+</script>
+|Parameters| %responseCode $response code of the file saved to the internal storage %filePath $file’s path| |responseCode| %1 $the picture has been saved successfully %-1 $the picture could not be saved|
+
+Take and retrieve picture
+Takes a picture with the phone’s camera.
+
+Ayoba.takePicture();
+Example
+function takePicture() {
+    Ayoba.takePicture();
+}
+Parameters
+No parameters
+Returns
+responseCode response code of the opening of the phone’s camera
+responseCode
+1: success,
+-1 failure
+Permissions
+TAKEPHOTO
+Gets the response code and path of the picture taken.
+The MicroApp must implement this method to retrieve the picture taken's path. When data is updated from Ayoba, then Ayoba calls this javascript method on MicroApp to pass the new data
+
+onPictureRetrievedResponse(responseCode, picturePath);
+Example
+function onPictureRetrievedResponse(responseCode, picturePath) {
+    var responseCode = responseCode
+    var picturePath = picturePath
+}
+Parameters
+responseCode response code of the picture being saved on the external storage
+picturePath picture’s path
+responseCode
+1 success,
+-1 failure
+Returns
+No return value
+Permissions
+TAKEPHOTO
+Send media
+Sends a media chat message (image, video, audio, file or contact)
+
+Ayoba.sendMedia(url, mimeType)
+Example
+Ayoba.sendMedia(url, mime);
+
+// Retrieve response Example
+  function onMediaSentResponse(responseCode, encodedUrl) {
+    var responseCode = responseCode
+Parameters
+url String: the media file url
+mimeType String: the mime type of the media file
+Allowed mime types
+Image image/jpg image/jpeg image/png image/gif
+Video video/mp4
+Audio audio/3gpp audio/ogg audio/mpeg audio/mp4 audio/wav audio/aac audio/flac
+File application/pdf application/msword
+Contact text/x-vcard text/vcard
+Returns
+No return value
+Permissions
+SendMessage
+The following method must be implemented to retrieve the call response:
+
+function onMediaSentResponse(responseCode, encodedUrl)
+Parameters
+responseCode
+encodedUrl Base64 encoded media file’s url
+responseCode
+1 the media file has been sent successfully
+-1 the media file could not be sent because exceeds the maximum file size (35 MB)
+-2 the media file could not be sent because the mime type is invalid
+-3 the media file could not be sent because the file extension is invalid
+-4 the media file could not be sent because the user has not accepted the native storage permission
+-5 the media file could not be sent
+Permissions
+SendMessage
+Next Steps
+That’s all to read on the location documents. Continue to learn more about our APIs, next is some documentation on our Event APIs
+
+Get user presence
+Gets the user presence. The MicroApp must implement this method to retrieve the user presence live data. When data is updated from Ayoba, then Ayoba calls this javascript method on MicroApp to pass the new data
+
+onPresenceChanged(presence)
+Example
+function onPresenceChanged(presence) {
+    currentPresence = presence
+  }
+Parameters
+presence
+presence
+0 Offline
+1 Online
+Returns
+No return value
+Permissions
+UserPresence
+Get user profile
+1. On Nickname Changed
+Gets the user nickname. The Microapp must implement this method to retrieve the user nickname live data. When data is updated from Ayoba, then Ayoba calls this javascript method on Microapp to pass the new data
+
+Example
+    function onNicknameChanged(nickname) {
+    currentNickname = nickname
+  }
+Parameters
+nickname
+Returns
+No return value
+Permissions
+UserProfile
+2. On Avatar Changed
+Gets the user avatar. The microapp must implement this method to retrieve the user avatar live data. When data is updated from Ayoba, then Ayoba calls this javascript method on microapp to pass the new data
+
+onAvatarChanged(avatar)
+Example
+   function onAvatarChanged(avatar) {
+    currentAvatarPath = avatarPath
+  }
+Parameters
+nickname user nickname
+avatarPath user profile picture URI
+Returns
+No return value
+Permissions
+UserProfile
+Get language
+Gets the user language code in ISO-639-1
+
+Ayoba.getLanguage()
+Example
+var languageCode = Ayoba.getLanguage();
+Parameters
+No parameters
+Returns
+String: the user’s ISO-639-1 language code. Example: en
+Permissions
+UserLanguage
+Send Generic Event
+Send a generic event to Firebase Analytics.
+
+function sendGenericEvent(eventNumber, description) {
+  Ayoba.sendGenericEvent(eventNumber, description);
+}
+Example
+
+<script type="text/javascript">
+    Ayoba.sendGenericEvent(1, "Generic Event Number 2"); // This will send an event called "genericEvent2"
+</script>
+
+Parameters
+eventNumber
+eventNumber
+0: genericEvent1
+1: genericEvent2
+2: genericEvent3
+3: genericEvent4
+Returns
+No return value
+Permissions
+No permissions
+Next Steps
+That’s all to read on the Events documents. Continue to learn more about our APIs, next is some documentation on our Payment APIs
+
+Start a Payment
+Starts a payment transaction.
+
+Ayoba.startPayment(method, amount, currency, description)
+Example
+<script type="text/javascript">
+    Ayoba.startPayment("MoMo", 100, "XAF", "Test payment");
+</script> 
+Parameters
+method
+Returns
+No return value
+Permissions
+MOMOCOLLECTIONS
+Payment Permissions Accepted
+This callback is called when the Ayoba user accepts MicroApp's payment permissions, so the MicroApp can know which payment methods are enabled for the user.
+
+onPaymentPermissionsAccepted(paymentMethodList)
+Example
+<script type="text/javascript">
+    function onPaymentPermissionsAccepted(paymentMethodList) {
+        // paymentMethodList is a list containing the enabled payment methods for the user
+    }
+</script> 
+Parameters
+paymentMethodList List of enabled payment methods (ie, "MoMo")
+Returns
+No return value
+Permissions
+No permissions required
+Payment Status Changed
+This callback is called when a payment transaction status is updated.
+
+onPaymentStatusChanged(transactionId, status, error)
+Example
+<script type="text/javascript">
+    function onPaymentStatusChanged(transactionId, status, error) {
+    }
+</script> 
+Parameters
+transactionId
+Returns
+No return value
+Permissions
+MOMOCOLLECTIONS
+Next Steps
+That’s all to read on the Payment process documents. Continue to learn more about our APIs, next is some documentation on our Guide
+
+Common Issues
+Do not include Ayoba, or any Ayoba branding in your application.
+You will need a developer contact form, and need to provide receipt to anyone wishing to contact you regarding bugs/questions around the site within 48 hours.
+If you have user generated content, this will need to be moderated.
+Ayoba does not provide hosting for your app, you will need a publicly available URL in order to integrate with Ayoba.
+Next Steps
+Now that you are aware of the common issues that may occur, the next step in addressing prohibited content involves implementing robust content moderation measures to ensure compliance with guidelines and policies
+
+Prohibited Content
+The following content is strictly not allowed in any microapp:
+
+Anything containing gambling
+Anything containing nudity/ sexual content
+Any form of violence/hate speech
+Any substance abuse
+Next Steps
+You are now well-informed about the specific types of content that are strictly prohibited.
+
+How to publish Microapp on Ayoba
+In order to publish your App to ayoba, you will need to follow these steps:
+
+Login to the developer portal, this is located in the top right of the screen. If you do not have an account you can sign in via Github or Google.
+Click your name in the top right of the portal, and click Profile.
+From the profile screen, you will be able to see a list of Apps. You can follow the steps listed there to create a new App.
+Follow the steps and await approval
+You will require the following:
+
+A logo that is 500px × 500px
+A publicly available URL for your application
+Authorized Fields
+Title: the title of the Microapp app displayed to users
+
+Description: More details about the app (if you like)
+
+Category: Choose between the categories shown to help the user find a small app
+
+Developer: Username of the app owner (will be displayed at the bottom of the permissions screen)
+
+Icon: The icon is displayed in the list of Microapps
+
+Languages: Languages ​​supported by Microapp
+
+Chat URI: The URI used in chat context (Group or P2P), can be used in full screen, intermediate screen and reduced depending on set flags
+
+Countries: Countries where a small app will be available to the user (in both installs and applications)
+
+Next Steps
+That’s all to read on the Payment process documents. Continue to learn more about our APIs, next is some documentation on our Permissions
+
+Microapp permissions
+Some permissions are required for the proper functioning of the API. Please find more information below:
+
+Permission types
+User Permissions: permissions needed from the user to enable the good function of the micro app
+
+Default permissions: permissions needed and auto accepted without the user consent
+
+Permissions description
+MSISDN: user’s phone number
+
+Country: user’s country (from phone number prefix)
+
+Location: user’s location
+
+SendMessage: ability to send text messages and media files on behalf of the user
+
+UserProfile: user’s nickname and profile picture
+
+UserPresence: user’s presence on the Microapp (0 or 1)
+
+UserLanguage: user’s language as selected on preferences
+
+Contacts: user’s Ayoba contact list
+
+Next Steps
+The end...
