@@ -31,9 +31,10 @@ import { QuestionInput } from "../../components/QuestionInput";
 import { ChatHistoryPanel } from "../../components/ChatHistory/ChatHistoryPanel";
 import { AppStateContext } from "../../state/AppProvider";
 import { useBoolean } from "@fluentui/react-hooks";
-import { getUserName } from 'ayoba-microapp-api'
+import { getUserName, getUserPhoneNumber } from 'ayoba-microapp-api'
 
 const userName = getUserName();
+const userPhoneNumber = getUserPhoneNumber();
 
 const enum messageStatus {
     NotRunning = "Not Running",
@@ -97,9 +98,14 @@ const Chat = () => {
             setShowAuthMessage(false);
         }*/
         // Disabling auth for now
-        setShowAuthMessage(false);
- 
-    }
+        console.log("usernumber","\'"+userPhoneNumber+"\'")
+        if(!userPhoneNumber || userPhoneNumber == "27833241313") {
+            setShowAuthMessage(true);
+        }
+        else {
+            setShowAuthMessage(false);
+        }
+    };
 
     const makeApiRequestWithoutCosmosDB = async (question: string, conversationId?: string) => {
         setIsLoading(true);
