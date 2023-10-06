@@ -1,0 +1,45 @@
+{
+    "sections": [
+        {
+            "heading": "What is Ayoba?",
+            "description": "Ayoba is a Superapp which is primarily a messaging service, similar to SMS, where users can also send voice messages, photos and message a group of people.\n\nAyoba also provides a platform for businesses to create their own MicroApp within the ayoba app.",
+            "tags": ["ayoba"]
+        },
+        {
+            "heading": "What is a MicroApp?",
+            "description": "Microapps are single-purpose, cross-platform, lightweight web applications that can be built into Ayoba to provide rich functionality to users. They are self-sufficient and can be independently deployed and tested. Microapps can be deployed dynamically without going through an App Store approval process and downloading/updating apps. Access restrictions can be applied to restrict who can access what Microapps, and what information from the main App users is delivered.\n\nMicroapps are designed to support a single step in a user's workflow. They can be used to provide users with specific information or to allow them to perform a specific task. For example, a Microapp could be used to provide users with the latest news headlines, to allow them to book a flight, or to allow them to play a game.\n\nMicroapps are built using the Ayoba API, which provides access to a variety of features, such as user profiles, messaging, and file sharing. This allows microapps to be highly integrated with the ayoba platform and to provide users with a seamless experience.\n\nMicroapps are a powerful way to extend the functionality of Ayoba and to provide users with a more personalized experience. They are easy to build and deploy, and they can be used to support a wide range of use cases.",
+            "tags": ["ayoba"]
+        },
+        {
+            "heading": "How do I create a MicroApp?",
+            "description": "To create a MicroApp, you will need to have a basic understanding of web development and the Ayoba API. You will also need to have an Ayoba account and be registered as a developer.\n\nThe first step in creating a MicroApp is to create a new project in the Ayoba Developer Portal. This will give you access to the Ayoba API and allow you to create and manage your MicroApps.\n\nOnce you have created a new project, you can start building your MicroApp using the Ayoba API. The Ayoba API provides a variety of features, such as user profiles, messaging, and file sharing, that you can use to build your MicroApp.\n\nAfter you have built your MicroApp, you can deploy it to the Ayoba platform and make it available to users. Microapps can be deployed dynamically without going through an App Store approval process and downloading/updating apps. Access restrictions can be applied to restrict who can access what Microapps, and what information from the main App users is delivered.\n\nFor more information on how to create a MicroApp, please refer to the Ayoba Developer Portal documentation.",
+            "tags": ["ayoba", "microapp", "creation"]
+        },
+        {
+            "heading": "What are the benefits of using MicroApps?",
+            "description": "There are several benefits to using MicroApps in Ayoba:\n\n1. Increased functionality: MicroApps can be used to provide users with specific information or to allow them to perform a specific task. This can greatly increase the functionality of Ayoba and provide users with a more personalized experience.\n\n2. Easy to build and deploy: MicroApps are easy to build and deploy, and they can be used to support a wide range of use cases.\n\n3. Highly integrated: MicroApps are built using the Ayoba API, which provides access to a variety of features, such as user profiles, messaging, and file sharing. This allows microapps to be highly integrated with the ayoba platform and to provide users with a seamless experience.\n\n4. Dynamic deployment: Microapps can be deployed dynamically without going through an App Store approval process and downloading/updating apps. Access restrictions can be applied to restrict who can access what Microapps, and what information from the main App users is delivered.\n\nFor more information on the benefits of using MicroApps, please refer to the Ayoba Developer Portal documentation.",
+            "tags": ["ayoba", "microapp", "benefits"]
+        },
+        {
+            "heading": "How do I test my MicroApp?",
+            "description": "To test your MicroApp, you can use the Ayoba Developer Portal. The Ayoba Developer Portal provides a testing environment where you can test your MicroApp before deploying it to the Ayoba platform.\n\nTo test your MicroApp, you will need to create a new project in the Ayoba Developer Portal and add your MicroApp to the project. Once you have added your MicroApp, you can use the testing environment to test your MicroApp and make sure that it is working correctly.\n\nFor more information on how to test your MicroApp, please refer to the Ayoba Developer Portal documentation.",
+            "tags": ["ayoba", "microapp", "testing"]
+        },
+        {
+            "heading": "How do I deploy my MicroApp?",
+            "description": "To deploy your MicroApp, you will need to have a basic understanding of web development and the Ayoba API. You will also need to have an Ayoba account and be registered as a developer.\n\nThe first step in deploying your MicroApp is to create a new project in the Ayoba Developer Portal. This will give you access to the Ayoba API and allow you to create and manage your MicroApps.\n\nOnce you have created a new project, you can start building your MicroApp using the Ayoba API. The Ayoba API provides a variety of features, such as user profiles, messaging, and file sharing, that you can use to build your MicroApp.\n\nAfter you have built your MicroApp and tested it in the Ayoba Developer Portal, you can deploy it to the Ayoba platform and make it available to users. Microapps can be deployed dynamically without going through an App Store approval process and downloading/updating apps. Access restrictions can be applied to restrict who can access what Microapps, and what information from the main App users is delivered.\n\nFor more information on how to deploy your MicroApp, please refer to the Ayoba Developer Portal documentation.",
+            "tags": ["ayoba", "microapp", "deployment"]
+        },
+        {
+            "heading": "Ayoba.getCountry()",
+            "description": "Gets the user country code in ISO-3166",
+            "example": "var countryCode = Ayoba.getCountry();",
+            "tags": ["ayoba", "example"]
+        },
+        {
+            "heading": "Get User Location",
+            "description": "Gets the user location. The MicroApp must implement this method to retrieve the location live data. When data is updated from Ayoba, then Ayoba calls this javascript method on MicroApp to pass the new data",
+            "tags": ["ayoba"]
+        }
+    ]
+}

@@ -31,6 +31,9 @@ import { QuestionInput } from "../../components/QuestionInput";
 import { ChatHistoryPanel } from "../../components/ChatHistory/ChatHistoryPanel";
 import { AppStateContext } from "../../state/AppProvider";
 import { useBoolean } from "@fluentui/react-hooks";
+import { getUserName } from 'ayoba-microapp-api'
+
+const userName = getUserName();
 
 const enum messageStatus {
     NotRunning = "Not Running",
@@ -547,7 +550,7 @@ const Chat = () => {
                                     className={styles.chatIcon}
                                     aria-hidden="true"
                                 />
-                                <h1 className={styles.chatEmptyStateTitle}>Ayoba! Let's start coding.</h1>
+                                <h1 className={styles.chatEmptyStateTitle}>Ayoba {userName}, let's get coding.</h1>
                                 <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to help you buid your next Super-(micro)App!</h2>
                             </Stack>
                         ) : (
