@@ -31,9 +31,8 @@ import { QuestionInput } from "../../components/QuestionInput";
 import { ChatHistoryPanel } from "../../components/ChatHistory/ChatHistoryPanel";
 import { AppStateContext } from "../../state/AppProvider";
 import { useBoolean } from "@fluentui/react-hooks";
-import { getUserName, getUserPhoneNumber } from 'ayoba-microapp-api'
+import { getUserPhoneNumber } from 'ayoba-microapp-api'
 
-const userName = getUserName();
 const userPhoneNumber = getUserPhoneNumber();
 
 const enum messageStatus {
@@ -98,7 +97,6 @@ const Chat = () => {
             setShowAuthMessage(false);
         }*/
         // Disabling auth for now
-        console.log("usernumber","\'"+userPhoneNumber+"\'")
         if(!userPhoneNumber || userPhoneNumber == "27833241313") {
             setShowAuthMessage(true);
         }
@@ -536,15 +534,10 @@ const Chat = () => {
             {showAuthMessage ? (
                 <Stack className={styles.chatEmptyState}>
                     <ShieldLockRegular className={styles.chatIcon} style={{color: 'darkorange', height: "200px", width: "200px"}}/>
-                    <h1 className={styles.chatEmptyStateTitle}>Authentication Not Configured</h1>
+                    <h1 className={styles.chatEmptyStateTitle}>Unavailable outside of Ayoba</h1>
                     <h2 className={styles.chatEmptyStateSubtitle}>
-                        This app does not have authentication configured. Please add an identity provider by finding your app in the 
-                        <a href="https://portal.azure.com/" target="_blank"> Azure Portal </a>
-                        and following 
-                         <a href="https://learn.microsoft.com/en-us/azure/app-service/scenario-secure-app-authentication-app-service#3-configure-authentication-and-authorization" target="_blank"> these instructions</a>.
+                        This app is only available within Ayoba. Please look for the ayobot microApp within Ayoba.
                     </h2>
-                    <h2 className={styles.chatEmptyStateSubtitle} style={{fontSize: "20px"}}><strong>Authentication configuration takes a few minutes to apply. </strong></h2>
-                    <h2 className={styles.chatEmptyStateSubtitle} style={{fontSize: "20px"}}><strong>If you deployed in the last 10 minutes, please wait and reload the page after 10 minutes.</strong></h2>
                 </Stack>
             ) : (
                 <Stack horizontal className={styles.chatRoot}>
@@ -556,8 +549,8 @@ const Chat = () => {
                                     className={styles.chatIcon}
                                     aria-hidden="true"
                                 />
-                                <h1 className={styles.chatEmptyStateTitle}>Ayoba {userName}, let's get coding.</h1>
-                                <h2 className={styles.chatEmptyStateSubtitle}>This chatbot is configured to help you buid your next Super-(micro)App!</h2>
+                                <h1 className={styles.chatEmptyStateTitle}>Let's get coding!</h1>
+                                <h2 className={styles.chatEmptyStateSubtitle}>I'm here to inspire and help you buid your next Super-(micro)App!</h2>
                             </Stack>
                         ) : (
                             <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? "40px" : "0px"}} role="log">
